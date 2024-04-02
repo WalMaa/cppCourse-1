@@ -1,6 +1,5 @@
 
 Room Allocation (237/248)
- (0/0):
 MEB 153 (31/32): W F
 MEB 218 (30/31): L H
 MEB 243 (29/30): S P Q

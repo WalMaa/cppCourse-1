@@ -13,11 +13,12 @@ using namespace std;
  */
 Allocator::Allocator(const string & studentFile, const string & roomFile)
 {
-	// std::cout << "/* Allocator: constructing */" << std::endl;
+	fileio::loadRooms(roomFile);
+	int roomsInFile = fileio::getNumRooms();
+	roomCount = roomsInFile + 1;
 	createLetterGroups();
 	loadStudents(studentFile);
 	loadRooms(roomFile);
-	// std::cout << "/* Allocator: Done constructing */" << std::endl;
 }
 
 Allocator::~Allocator() {
@@ -65,24 +66,19 @@ void Allocator::loadStudents(const string & file)
  */
 void Allocator::loadRooms(const string & file)
 {
-	// std::cout << "Allocator: Loading rooms" << std::endl;
 	// Read in rooms
 	fileio::loadRooms(file);
 	rooms = new Room[roomCount];
-	// std::cout << roomCount << std::endl;
 
 	totalCapacity = 0;
 	int i = 0;
 	while (fileio::areMoreRooms())
 	{
-		
-		// std::cout << i << std::endl;
-		rooms[i] = fileio::nextRoom();
-		// rooms[i].print();
-		totalCapacity += rooms[i].capacity;
 		i++;
+		rooms[i] = fileio::nextRoom();
+		totalCapacity += rooms[i].capacity;
+		
 	}
-	// std::cout << "Allocator: Done loading rooms" << std::endl;
 }
 
 void Allocator::printStudents()
@@ -118,7 +114,7 @@ void Allocator::printRooms()
 {
 	// Output the allocation
 	cout << "Room Allocation (" << studentCount << "/" << totalCapacity << ")" << endl;
-	for (int i = 0; i < roomCount; i++)
+	for (int i = 1; i < roomCount; i++)
 		rooms[i].print();
 }
 

@@ -94,14 +94,10 @@ void Room::print()
  */
 void Room::clear()
 {
-	// std::cout << "/* Room: clear */" << std::endl;
-	// std::cout << (letters == nullptr) << std::endl;
 	if (letters != nullptr){
-	// std::cout <<"Letters: " << letters << std::endl;
 		delete []letters;
 		letters = nullptr;
 	}
-	// std::cout << "/* Done clearing */" << std::endl;
 }
 
 /**

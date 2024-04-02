@@ -90,7 +90,7 @@ class Allocator
         Room* rooms;
 
         /** Size of the rooms array */
-        int roomCount = 10;
+        int roomCount;
 
         /** Total number of students */
         int studentCount;
